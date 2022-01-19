@@ -1,2 +1,7 @@
-# Kubernetes202202_04
-ì¿ ë²„ë„¤í‹°ìŠ¤ ìŠ¤í„°ë””
+# Kubernetes in action
+
+This repository contains all the code (and some additional files) from my [Kubernetes in Action](http://manning.com/books/kubernetes-in-action?) book.
+
+The files for the [second edition](http://kubernetes-in-action.com/second-edition) of the book are in a [different repository](http://github.com/luksa/kubernetes-in-action-2nd-edition).
+
+## ÇØ´ç ¼Ò½º ÄÚµå´Â Äí¹ö³×Æ¼½º ÀÎ ¾×¼Ç Ã¥(v1)À» ÀĞ°í ½ºÅÍµğÇÑ ÀÚ·á Á¤¸®ÀÔ´Ï´Ù.
