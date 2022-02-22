@@ -1,9 +1,11 @@
 apiVersion: v1
 kind: Endpoints
 metadata:
+# 엔드포인트 오브젝트 이름은 서비스 이름과 일치해야 한다
   name: external-service
 subsets:
   - addresses:
+  # ip와 port를 수동으로 설정했다.
     - ip: 11.11.11.11
     - ip: 22.22.22.22
     ports:

@@ -4,8 +4,10 @@ metadata:
   name: kubia
 spec:
   tls:
+  # https 연결
   - hosts: 
     - kubia.example.com
+    # 시크릿을 활용하는 것을 알 수 있다
     secretName: tls-secret
   rules:
   - host: kubia.example.com

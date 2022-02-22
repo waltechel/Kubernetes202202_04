@@ -3,7 +3,10 @@ kind: Service
 metadata:
   name: external-service
 spec:
+  # DNS 레벨에서만 구현된다.
   type: ExternalName
+  # 실제 서비스의 정규화된 도메인 이름
+  # FQDN : Fully Qualified Domain Name
   externalName: api.somecompany.com
   ports:
   - port: 80

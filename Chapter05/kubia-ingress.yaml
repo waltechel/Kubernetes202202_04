@@ -1,9 +1,10 @@
 apiVersion: extensions/v1beta1
-kind: Ingress
+kind: Ingress # Ingress 설정
 metadata:
   name: kubia
 spec:
   rules:
+  # 인그레스는 도메인 이름을 서비스에 매핑한다
   - host: kubia.example.com
     http:
       paths:

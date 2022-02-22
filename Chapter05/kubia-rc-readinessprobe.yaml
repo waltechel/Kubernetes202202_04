@@ -17,6 +17,7 @@ spec:
         ports:
         - name: http
           containerPort: 8080
+          # 레디니스 프로브를 정의하였다
         readinessProbe:
           exec:
             command:

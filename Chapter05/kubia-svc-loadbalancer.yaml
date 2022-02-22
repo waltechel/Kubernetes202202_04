@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: kubia-loadbalancer
 spec:
-  type: LoadBalancer
+  type: LoadBalancer # 로드밸런서 유형으로 생성한다.
   ports:
   - port: 80
     targetPort: 8080

@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: kubia-headless
 spec:
+# 클러스터IP가 필요하지 않다면 서비스 IP가 아니라 파드의 IP 리스트를 반환한다.
   clusterIP: None
   ports:
   - port: 80

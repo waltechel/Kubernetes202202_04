@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: kubia-nodeport
 spec:
-  type: NodePort
+# 서비스 유형을 노드포트로 설정
+  type: NodePort 
   ports:
   - port: 80
-    targetPort: 8080
-    nodePort: 30123
+    targetPort: 8080 # 서비스 대상 파드들의 포트
+    nodePort: 30123 # 각 클러스터 노드의 포트
   selector:
     app: kubia
 
