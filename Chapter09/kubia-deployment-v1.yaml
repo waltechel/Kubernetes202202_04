@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment ## 디플로이먼트 버전을 포함할 필요가 없다.
 metadata:
   name: kubia
 spec:
@@ -11,8 +11,8 @@ spec:
         app: kubia
     spec:
       containers:
-      - image: luksa/kubia:v1
-        name: nodejs
+        - image: luksa/kubia:v1
+          name: nodejs
   selector:
     matchLabels:
       app: kubia

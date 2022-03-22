@@ -12,5 +12,5 @@ spec:
         app: kubia
     spec:
       containers:
-      - image: luksa/kubia:v3
-        name: nodejs
+        - image: luksa/kubia:v3
+          name: nodejs
