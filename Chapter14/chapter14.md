@@ -2,9 +2,49 @@
 
 ## 14.1 파드 컨테이너의 리소스 요청
 
+- 파드를 생성할 때 컨테이너가 필요로 하는 cpu와 메모리 양과 사용할 수 있는 엄격한 제한을 지정할 수 있다.
+
 ### 14.1.1 리소스 요청을 갖는 파드 생성하기
 
+- 이런 파드/컨테이너 다섯 개를 CPU 코어 하나에서 충분히 빠르게 실행할 수 있다.
+
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: requests-pod
+spec:
+  containers:
+  - image: busybox
+    command: ["dd", "if=/dev/zero", "of=/dev/null"]
+    name: main
+    resources:
+      requests:
+        cpu: 200m   # 컨테이너는 200밀리코어를 요청한다(하나의 CPU 시간의 1/5)
+        memory: 10Mi # 컨테이너는 10Mi의 메모리를 요청한다.
+```
+
+- 파드를 실행하면 컨테이너 안에서 top을 실행해 프로세스의 CPU 소비량을 확인할 수 있다. 
+- Minikube 가상머신은 CPU 코어 2개가 할당되어 있다. 프로세스가 전체 CPU의 50% 를 소비하는 것으로 표시되는 이유다.
+
 ### 14.1.2 리소스 요청이 스케줄링에 미치는 영향
+
+#### 파드가 특정 노드에 실행될 수 있는지 스케줄러가 결정하는 방법
+
+- 스케줄러는 스케줄링하는 시점에 각 개별 리소스가 얼마나 사용되는지 보지 않고, 노드에 배포된 파드들의 리소스 요청량의 전체 합만을 본다.
+
+![image](images/figure14.1.JPG)
+
+#### 스케줄러가 파드를 위해 최적의 노드를 선택할 때 파드의 요청을 사용하는 방법
+ 
+- LeastRequestedPriority : 요청된 리소스가 낮은 노드
+- MostRequestedPriority : 리소스가 가장 많은 노드, 가장 적은 수의 노들르 사용하도록 보장
+
+#### 노드의 용량 검사
+
+#### 파드가 스케줄링되지 않은 이유
+
+![image](images/figure14.2.JPG)
 
 ### 14.1.3 CPU 요청이 CPU 시간 공유에 미치는 영향
 
@@ -13,6 +53,24 @@
 ## 14.2 컨테이너에 사용 가능한 리소스 제한
 
 ### 14.2.1 컨테이너가 사용 가능한 리소스 양을 엄격한 제한으로 설정
+
+#### 리소스 제한을 갖는 파드 생성
+
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: limited-pod
+spec:
+  containers:
+  - image: busybox
+    command: ["dd", "if=/dev/zero", "of=/dev/null"]
+    name: main
+    resources:
+      limits:
+        cpu: 1
+        memory: 20Mi
+```
 
 ### 14.2.2 리소스 제한 초과
 
